@@ -20,3 +20,11 @@ class Instructor(models.Model):
 
     def __str__(self):
         return self.name
+
+class InstructorTraining(models.Model):
+    instructor = models.ForeignKey(Instructor, on_delete=models.CASCADE)
+    training = models.ForeignKey(Training, on_delete=models.CASCADE)
+    date = models.DateField()
+
+    def __str__(self):
+        return self.instructor.name + ' - ' + self.training.name
